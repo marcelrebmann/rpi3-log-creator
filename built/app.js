@@ -36,7 +36,7 @@ gpio.on('change', (channel, value) => {
         });
     }
 });
-gpio.setup(8, gpio.DIR_IN, gpio.EDGE_BOTH);
+gpio.setup(8, gpio.DIR_IN, gpio.EDGE_FALLING);
 function write() {
     gpio.write(13, true, function (err) {
         if (err)
