@@ -21,7 +21,7 @@ const STATUS: any = [
 ];
 
 gpio.setup(8, gpio.DIR_IN, gpio.EDGE_BOTH);
-gpio.setup(27, gpio.DIR_LOW);
+gpio.setup(27, gpio.DIR_LOW, write);
 
 gpio.on('change', (channel, value) => {
     console.log(channel);
@@ -40,7 +40,7 @@ gpio.on('change', (channel, value) => {
     }
 });
 
-function blink() {
+function write() {
     gpio.write(27, true, function(err) {
         if(err) throw err;
         setTimeout(gpio.write(27, false, function (err) {
