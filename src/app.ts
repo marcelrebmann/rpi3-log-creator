@@ -20,8 +20,7 @@ const STATUS: any = [
     "WARNING"
 ];
 
-gpio.setup(8, gpio.DIR_IN, gpio.EDGE_BOTH);
-gpio.setup(27, gpio.DIR_OUT, write);
+gpio.setup(27, gpio.DIR_OUT);
 
 gpio.on('change', (channel, value) => {
     console.log(channel);
@@ -39,6 +38,8 @@ gpio.on('change', (channel, value) => {
         });
     }
 });
+
+gpio.setup(8, gpio.DIR_IN, gpio.EDGE_BOTH);
 
 function write() {
     gpio.write(27, true, function(err) {
