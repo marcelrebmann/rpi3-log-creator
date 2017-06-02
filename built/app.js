@@ -44,7 +44,7 @@ function write() {
         setTimeout(gpio.write(13, false, function (err) {
             if (err)
                 throw err;
-        }), 300);
+        })(), 300);
     });
 }
 //# sourceMappingURL=app.js.map

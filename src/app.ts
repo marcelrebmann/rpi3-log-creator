@@ -46,6 +46,6 @@ function write() {
         if(err) throw err;
         setTimeout(gpio.write(13, false, function (err) {
             if(err) throw err;
-        }), 300);
+        })(), 300);
     });
 }
