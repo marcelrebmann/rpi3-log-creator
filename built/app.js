@@ -19,7 +19,7 @@ const STATUS = [
     "ERROR",
     "WARNING"
 ];
-gpio.setup(27, gpio.DIR_OUT, write());
+gpio.setup(27, gpio.DIR_OUT, write);
 gpio.on('change', (channel, value) => {
     console.log(channel);
     if (!value && channel === 8) {
