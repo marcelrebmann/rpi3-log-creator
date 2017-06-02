@@ -32,12 +32,11 @@ gpio.on('change', (channel, value) => {
             energy: Math.round(Math.random() * 10),
             order: "INJECTOR-CI2",
             manualData: true
-        }).then((res) => {
-            if (res) {
-                write(true);
-            } else {
-                write(false);
-            }
+        }).then(() => {
+            write(true);
+        }).catch((err) => {
+            console.log(err);
+            write(false);
         });
     }
 });
@@ -46,13 +45,13 @@ gpio.setup(8, gpio.DIR_IN, gpio.EDGE_FALLING);
 
 function write(green: boolean) {
     if (green) {
-        gpio.write(13, true, function(err) {
-            if(err) throw err;
+        gpio.write(13, true, function (err) {
+            if (err) throw err;
             setTimeout(closeLED13, 300);
         });
     } else {
-        gpio.write(11, true, function(err) {
-            if(err) throw err;
+        gpio.write(11, true, function (err) {
+            if (err) throw err;
             setTimeout(closeLED11, 300);
         });
     }
@@ -61,12 +60,12 @@ function write(green: boolean) {
 
 function closeLED13() {
     gpio.write(13, false, function (err) {
-        if(err) throw err;
+        if (err) throw err;
     });
 }
 
 function closeLED11() {
     gpio.write(11, false, function (err) {
-        if(err) throw err;
+        if (err) throw err;
     });
 }

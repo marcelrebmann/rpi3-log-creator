@@ -30,13 +30,11 @@ gpio.on('change', (channel, value) => {
             energy: Math.round(Math.random() * 10),
             order: "INJECTOR-CI2",
             manualData: true
-        }).then((res) => {
-            if (res) {
-                write(true);
-            }
-            else {
-                write(false);
-            }
+        }).then(() => {
+            write(true);
+        }).catch((err) => {
+            console.log(err);
+            write(false);
         });
     }
 });
