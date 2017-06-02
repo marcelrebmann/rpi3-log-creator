@@ -1,5 +1,19 @@
 {
-  "name": "$package_name$",
+  "name": "rpi3-log-creator",
   "version": "0.0.1",
-  $END$
+  "description": "RPi Log Creator",
+  "main": "",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "keywords": [
+    "Raspberry Pi 3",
+    "ELK Stack",
+    "Node"
+  ],
+  "dependencies": {
+    "typescript": "^2.3.4",
+    "rpio": "^0.9.16"
+  }
 }
