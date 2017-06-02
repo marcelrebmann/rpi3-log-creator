@@ -33,7 +33,9 @@ gpio.on('change', (channel, value) => {
             manualData: true
         }).then((res) => {
             if (res) {
-                write();
+                write(true);
+            } else {
+                write(false);
             }
         });
     }
@@ -41,11 +43,19 @@ gpio.on('change', (channel, value) => {
 
 gpio.setup(8, gpio.DIR_IN, gpio.EDGE_FALLING);
 
-function write() {
-    gpio.write(13, true, function(err) {
-        if(err) throw err;
-        setTimeout(closeLED, 300);
-    });
+function write(green: boolean) {
+    if (green) {
+        gpio.write(13, true, function(err) {
+            if(err) throw err;
+            setTimeout(closeLED, 300);
+        });
+    } else {
+        gpio.write(11, true, function(err) {
+            if(err) throw err;
+            setTimeout(closeLED, 300);
+        });
+    }
+
 }
 
 function closeLED() {
