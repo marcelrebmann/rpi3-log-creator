@@ -13,6 +13,7 @@
     "Node"
   ],
   "dependencies": {
-    "typescript": "^2.3.4"
+    "typescript": "^2.3.4",
+    "rpi-gpio": "^0.8.1"
   }
 }
