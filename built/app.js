@@ -19,6 +19,8 @@ const STATUS = [
     "ERROR",
     "WARNING"
 ];
+gpio.setup(8, gpio.DIR_IN, gpio.EDGE_BOTH);
+gpio.setup(27, gpio.DIR_LOW, blink);
 gpio.on('change', (channel, value) => {
     if (!value) {
         logstash_connector_1.LogstashConnector.pushLog({
@@ -27,8 +29,21 @@ gpio.on('change', (channel, value) => {
             energy: Math.round(Math.random() * 10),
             order: "INJECTOR-CI2",
             manualData: true
+        }).then((res) => {
+            if (res) {
+                blink();
+            }
         });
     }
 });
-gpio.setup(8, gpio.DIR_IN, gpio.EDGE_BOTH);
+function blink() {
+    gpio.write(27, true, function (err) {
+        if (err)
+            throw err;
+        setTimeout(gpio.write(27, false, function (err) {
+            if (err)
+                throw err;
+        }), 300);
+    });
+}
 //# sourceMappingURL=app.js.map
