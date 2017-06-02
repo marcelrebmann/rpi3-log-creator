@@ -46,19 +46,25 @@ function write(green) {
         gpio.write(13, true, function (err) {
             if (err)
                 throw err;
-            setTimeout(closeLED(13), 300);
+            setTimeout(closeLED13, 300);
         });
     }
     else {
         gpio.write(11, true, function (err) {
             if (err)
                 throw err;
-            setTimeout(closeLED(11), 300);
+            setTimeout(closeLED11, 300);
         });
     }
 }
-function closeLED(channel) {
-    gpio.write(channel, false, function (err) {
+function closeLED13() {
+    gpio.write(13, false, function (err) {
+        if (err)
+            throw err;
+    });
+}
+function closeLED11() {
+    gpio.write(11, false, function (err) {
         if (err)
             throw err;
     });
