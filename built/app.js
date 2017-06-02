@@ -22,7 +22,6 @@ const STATUS = [
 gpio.setup(13, gpio.DIR_OUT, write);
 gpio.setup(11, gpio.DIR_OUT, write);
 gpio.on('change', (channel, value) => {
-    console.log(channel);
     if (!value && channel === 8) {
         logstash_connector_1.LogstashConnector.pushLog({
             machine: MACHINE_TYPES[0],
