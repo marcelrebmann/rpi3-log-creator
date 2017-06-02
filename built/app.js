@@ -41,10 +41,13 @@ function write() {
     gpio.write(13, true, function (err) {
         if (err)
             throw err;
-        setTimeout(gpio.write(13, false, function (err) {
-            if (err)
-                throw err;
-        })(), 300);
+        setTimeout(closeLED, 300);
+    });
+}
+function closeLED() {
+    gpio.write(13, false, function (err) {
+        if (err)
+            throw err;
     });
 }
 //# sourceMappingURL=app.js.map
