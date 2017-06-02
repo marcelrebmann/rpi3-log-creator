@@ -21,6 +21,7 @@ const STATUS: any = [
 ];
 
 gpio.setup(13, gpio.DIR_OUT, write);
+gpio.setup(11, gpio.DIR_OUT, write);
 
 gpio.on('change', (channel, value) => {
     console.log(channel);
@@ -47,19 +48,19 @@ function write(green: boolean) {
     if (green) {
         gpio.write(13, true, function(err) {
             if(err) throw err;
-            setTimeout(closeLED, 300);
+            setTimeout(closeLED(13), 300);
         });
     } else {
         gpio.write(11, true, function(err) {
             if(err) throw err;
-            setTimeout(closeLED, 300);
+            setTimeout(closeLED(11), 300);
         });
     }
 
 }
 
-function closeLED() {
-    gpio.write(13, false, function (err) {
+function closeLED(channel: number) {
+    gpio.write(channel, false, function (err) {
         if(err) throw err;
     });
 }
