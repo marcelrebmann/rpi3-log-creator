@@ -25,7 +25,7 @@ gpio.setup(27, gpio.DIR_LOW);
 
 gpio.on('change', (channel, value) => {
     console.log(channel);
-    if (!value) {
+    if (!value && channel === 8) {
         LogstashConnector.pushLog({
             machine: MACHINE_TYPES[0],
             status: STATUS[3],
@@ -34,7 +34,7 @@ gpio.on('change', (channel, value) => {
             manualData: true
         }).then((res) => {
             if (res) {
-                //blink();
+                blink();
             }
         });
     }
