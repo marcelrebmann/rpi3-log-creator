@@ -20,7 +20,7 @@ const STATUS = [
     "WARNING"
 ];
 gpio.setup(8, gpio.DIR_IN, gpio.EDGE_BOTH);
-gpio.setup(27, gpio.DIR_LOW, write);
+gpio.setup(27, gpio.DIR_OUT, write);
 gpio.on('change', (channel, value) => {
     console.log(channel);
     if (!value && channel === 8) {
@@ -32,7 +32,7 @@ gpio.on('change', (channel, value) => {
             manualData: true
         }).then((res) => {
             if (res) {
-                blink();
+                write();
             }
         });
     }
