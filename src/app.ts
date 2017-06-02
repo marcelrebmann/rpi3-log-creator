@@ -21,9 +21,10 @@ const STATUS: any = [
 ];
 
 gpio.setup(8, gpio.DIR_IN, gpio.EDGE_BOTH);
-gpio.setup(27, gpio.DIR_LOW, blink);
+gpio.setup(27, gpio.DIR_LOW);
 
 gpio.on('change', (channel, value) => {
+    console.log(channel);
     if (!value) {
         LogstashConnector.pushLog({
             machine: MACHINE_TYPES[0],
@@ -33,7 +34,7 @@ gpio.on('change', (channel, value) => {
             manualData: true
         }).then((res) => {
             if (res) {
-                blink();
+                //blink();
             }
         });
     }
