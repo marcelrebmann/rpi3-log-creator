@@ -9,7 +9,7 @@ export class LogstashConnector {
             object = JSON.stringify(object);
             let req: ClientRequest = request({
                 host: "127.0.0.1",
-                port: 80801,
+                port: 8080,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
